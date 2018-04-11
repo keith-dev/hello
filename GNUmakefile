@@ -10,7 +10,8 @@ all: $(PROG_CXX)
 clean:
 	- rm $(PROG_CXX) $(DEPENDS) $(SRCS:.cc=.o) $(SRCS:.cc=.depend)
 
-install: $(PROG_CXX)
+install:
+#install: $(PROG_CXX)
 #	install -s -o root -g wheel -m 555 $(PROG_CXX) /$(PROG_CXX)
 	install -s -o root -m 555 $(PROG_CXX) /$(PROG_CXX)
 	install -d /.debug/

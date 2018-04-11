@@ -1,12 +1,16 @@
 language: cpp
 
-compiler: gcc
+compiler:
+    - gcc
 
-os: linux
+os:
+    - linux
 
 before_script:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then (mkdir bin; cd bin; ln -s `which gobjcopy` objcopy); fi
 
-script: make
+script:
+    - make
 
-install: make install
+install:
+    - sudo make install
