@@ -12,5 +12,5 @@ before_script:
 script:
     - make
 
-install:
-    - sudo make install
+#install:
+#   - sudo make install
