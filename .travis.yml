@@ -2,10 +2,9 @@ language: cpp
 
 compiler: gcc
 
-os: osx
+os: linux
 
 before_script:
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install yarn; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then (mkdir bin; cd bin; ln -s `which gobjcopy` objcopy); fi
 
 script: make
