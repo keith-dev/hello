@@ -1,7 +1,7 @@
 PROG_CXX = hello
 SRCS     = main.cc
 
-CXXFLAGS = -O2 -pipe -g -MD -fstack-protector-strong -Qunused-arguments
+CXXFLAGS = -O2 -pipe -g
 
 DEPENDS  = $(PROG_CXX).depends
 
