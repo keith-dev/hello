@@ -11,12 +11,15 @@ clean:
 	- rm $(PROG_CXX) $(DEPENDS) $(SRCS:.cc=.o) $(SRCS:.cc=.depend)
 
 install: $(PROG_CXX)
-	install -s -o root -g wheel -m 555 $(PROG_CXX) /$(PROG_CXX)
+#	install -s -o root -g wheel -m 555 $(PROG_CXX) /$(PROG_CXX)
+	install -s -o root -m 555 $(PROG_CXX) /$(PROG_CXX)
 	install -d /.debug/
-	install -o root -g wheel -m 444 $(PROG_CXX).debug /.debug/$(PROG_CXX).debug
+#	install -o root -g wheel -m 444 $(PROG_CXX).debug /.debug/$(PROG_CXX).debug
+	install -o root -m 444 $(PROG_CXX).debug /.debug/$(PROG_CXX).debug
 
 $(PROG_CXX): $(SRCS:.cc=.o)
 	$(LINK.cc) -o $@ $^ $(LDADD)
+	cp main.o $@.full
 	objcopy --only-keep-debug $@.full $@.debug
 	objcopy --strip-debug --add-gnu-debuglink=$@.debug $@.full $@
 
