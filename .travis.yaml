@@ -1,5 +1,9 @@
 language: c++
 
-install: sudo make install
+os: [linux, osx]
+
+sudo: false
 
 script: make
+
+install: [sudo make install]
