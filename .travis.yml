@@ -4,9 +4,9 @@ compiler: [clang, gcc]
 
 os: osx
 
-script: make
-
-before_install:
+before_script:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then (mkdir bin; cd bin; ln -s `which gobjcopy`); fi
+
+script: make
 
 install: make install
