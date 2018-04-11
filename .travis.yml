@@ -1,12 +1,7 @@
-language:
-    - c++
+language: cpp
 
-os:
-    - linux
-    - osx
+os: osx
 
-script:
-    - make
+script: make
 
-install:
-    - make install
+install: make install
