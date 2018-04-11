@@ -1,11 +1,11 @@
 language: cpp
 
-compiler: [clang, gcc]
+compiler: gcc
 
 os: osx
 
 before_script:
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then (mkdir bin; cd bin; ln -s `which gobjcopy`); fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then (mkdir bin; cd bin; ln -s `which gobjcopy` objcopy); fi
 
 script: make
 
