@@ -8,7 +8,7 @@ os:
     - osx
 
 before_script:
-    - sudo brew install binutils
+    - brew install binutils
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export PATH=`pwd`/bin:${PATH}; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir bin; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd bin && ln -s `which gobjcopy` objcopy); fi
