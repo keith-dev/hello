@@ -9,8 +9,9 @@ os:
     - osx
 
 before_script:
+    - mkdir tmp
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install binutils; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir bin tmp; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir bin; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then (cd bin && ln -s `which gobjcopy` objcopy); fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export PATH=`pwd`/bin:${PATH}; fi
 
