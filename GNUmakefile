@@ -19,7 +19,7 @@ install:
 
 $(PROG_CXX): $(SRCS:.cc=.o)
 	$(LINK.cc) -o $@ $^ $(LDADD)
-	cp main.o $@.full
+	cp $@ $@.full
 	objcopy --only-keep-debug $@.full $@.debug
 	objcopy --strip-debug --add-gnu-debuglink=$@.debug $@.full $@
 
