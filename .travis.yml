@@ -16,11 +16,11 @@ before_script:
     - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then export PATH=`pwd`/bin:${PATH}; fi
 
 script:
-    - make
-    - ls -l
-    - ldd ./hello.full
-    - ./hello.full > tmp/hello.out
     - pwd
+    - make
+    - if [[ "${TRAVIS_OS_NAME}" == "osx"   ]]; then otool -l ./hello.full; fi
+    - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ldd ./hello.full;      fi
+    - ./hello.full > tmp/hello.out
     - od -H test/unix/fixture.out
     - od -H test/mac/fixture.out
     - od -H test/win/fixture.out
