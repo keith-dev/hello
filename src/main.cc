@@ -7,7 +7,7 @@ public:
 	using dlib::server_http;
 
 private:
-	const string dlib::server_http::on_request(const dlib::incoming_things&, dlib::outgoing_things&) { return std::string(); }
+	const string on_request(const dlib::incoming_things&, dlib::outgoing_things&) { return std::string(); }
 };
 
 int main()
