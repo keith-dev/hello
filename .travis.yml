@@ -7,8 +7,8 @@ matrix:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
-              - find . -name 'lib*'
-              - find . -name sockets
+              - export CXXFLAGS="${CXXFLAGS} -I../dlib/dlib"
+              - export LDFLAGS="${LDFLAGS} -I../dlib/build/dlib -ldlib"
           script:
               - make
               - src/hello > tmp/hello.out
@@ -21,6 +21,8 @@ matrix:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
+              - export CXXFLAGS="${CXXFLAGS} -I../dlib/dlib"
+              - export LDFLAGS="${LDFLAGS} -I../dlib/build/dlib -ldlib"
           script:
               - make
               - src/hello > tmp/hello.out
@@ -37,6 +39,8 @@ matrix:
               - export PATH=`pwd`/bin:${PATH}
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
+              - export CXXFLAGS="${CXXFLAGS} -I../dlib/dlib"
+              - export LDFLAGS="${LDFLAGS} -I../dlib/build/dlib -ldlib"
           script:
               - make
               - src/hello.full > tmp/hello.out
@@ -53,6 +57,8 @@ matrix:
               - export PATH=`pwd`/bin:${PATH}
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
+              - export CXXFLAGS="${CXXFLAGS} -I../dlib/dlib"
+              - export LDFLAGS="${LDFLAGS} -I../dlib/build/dlib -ldlib"
           script:
               - make
               - src/hello.full > tmp/hello.out

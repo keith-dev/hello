@@ -1,7 +1,7 @@
 PROG_CXX = hello
 SRCS     = main.cc
 
-CXXFLAGS = -O2 -pipe -g
+CXXFLAGS += -O2 -pipe -g
 
 DEPENDS  = $(PROG_CXX).depends
 
@@ -18,7 +18,7 @@ install:
 	install -o root -m 444 $(PROG_CXX).debug /.debug/$(PROG_CXX).debug
 
 $(PROG_CXX): $(SRCS:.cc=.o)
-	$(LINK.cc) -o $@ $^ $(LDADD)
+	$(LINK.cc) -o $@ $^ $(LDFLAGS)
 	mv $@ $@.full
 	objcopy --only-keep-debug $@.full $@.debug
 	objcopy --strip-debug --add-gnu-debuglink=$@.debug $@.full $@
