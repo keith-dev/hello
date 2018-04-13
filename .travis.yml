@@ -18,4 +18,5 @@ before_script:
 script:
     - make
     - ./hello > tmp/hello.out
-    - diff tmp/hello.out test/fixture.out
+    - if [[ "$TRAVIS_OS_NAME" == "osx"   ]]; then diff tmp/hello.out test/mac/fixture.out;  fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then diff tmp/hello.out test/unix/fixture.out; fi
