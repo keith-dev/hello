@@ -10,6 +10,7 @@ matrix:
               - export CXXFLAGS="${CXXFLAGS} -I../dlib"
               - export LDFLAGS="${LDFLAGS} -I../dlib/build/dlib -ldlib"
           script:
+              - (cd src && ls -l .. ../dlib ../dlib/dlib)
               - make
               - src/hello > tmp/hello.out
               - diff tmp/hello.out test/unix/fixture.out
