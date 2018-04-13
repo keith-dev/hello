@@ -1,7 +1,7 @@
 PROG_CXX = hello
 SRCS     = main.cc
 
-CXXFLAGS += -O2 -pipe -g -std=c++11
+CXXFLAGS += -O2 -pipe -g -std=c++11 -pthread
 
 DEPENDS  = $(PROG_CXX).depends
 

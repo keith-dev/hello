@@ -2,6 +2,6 @@ PROG_CXX = hello
 SRCS     = main.cc
 MK_MAN   = no
 
-CXXFLAGS += -std=c++11
+CXXFLAGS += -std=c++11 -pthread
 
 .include <bsd.prog.mk>
