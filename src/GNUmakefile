@@ -1,7 +1,10 @@
 PROG_CXX = hello
 SRCS     = main.cc
 
+CXXFLAGS += -I../dlib
 CXXFLAGS += -O2 -pipe -g -std=c++11 -pthread
+
+LDFLAGS  += -L../dlib/build/dlib -ldlib
 
 DEPENDS  = $(PROG_CXX).depends
 
