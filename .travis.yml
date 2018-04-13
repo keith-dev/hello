@@ -10,13 +10,16 @@ os:
 
 before_script:
     - mkdir tmp
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install binutils; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir bin; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then (cd bin && ln -s `which gobjcopy` objcopy); fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export PATH=`pwd`/bin:${PATH}; fi
+    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then brew install binutils; fi
+    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then mkdir bin; fi
+    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then (cd bin && ln -s `which gobjcopy` objcopy); fi
+    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then export PATH=`pwd`/bin:${PATH}; fi
 
 script:
     - make
     - ./hello > tmp/hello.out
-    - if [[ "$TRAVIS_OS_NAME" == "osx"   ]]; then diff tmp/hello.out test/mac/fixture.out;  fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then diff tmp/hello.out test/unix/fixture.out; fi
+    - pwd
+    - find . | xargs ls -l
+    - if [[ "${TRAVIS_OS_NAME}" == "osx"   ]]; then diff tmp/hello.out test/mac/fixture.out;  fi
+    - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then diff tmp/hello.out test/unix/fixture.out; fi
+    - if [[ "${TRAVIS_OS_NAME}" == "win"   ]]; then diff tmp/hello.out test/win/fixture.out;  fi
