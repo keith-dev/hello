@@ -18,13 +18,16 @@ before_script:
 script:
 #   - pwd
     - make
-#   - if [[ "${TRAVIS_OS_NAME}" == "osx"   ]]; then otool -l ./hello.full; fi
 #   - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then ldd ./hello.full;      fi
+#   - if [[ "${TRAVIS_OS_NAME}" == "osx"   ]]; then otool -l ./hello.full; fi
 #   - od -H test/unix/fixture.out
 #   - od -H test/mac/fixture.out
 #   - od -H test/win/fixture.out
 #   - od -H tmp/hello.out
     - ./hello.full > tmp/hello.out
-    - if [[ "${TRAVIS_OS_NAME}" == "osx"   ]]; then diff tmp/hello.out test/mac/fixture.out;  fi
-    - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then diff tmp/hello.out test/unix/fixture.out; fi
-    - if [[ "${TRAVIS_OS_NAME}" == "win"   ]]; then diff tmp/hello.out test/win/fixture.out;  fi
+    - diff tmp/hello.out test/unix/fixture.out
+    - diff tmp/hello.out test/mac/fixture.out
+    - diff tmp/hello.out test/win/fixture.out
+#   - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then diff tmp/hello.out test/unix/fixture.out; fi
+#   - if [[ "${TRAVIS_OS_NAME}" == "osx"   ]]; then diff tmp/hello.out test/mac/fixture.out;  fi
+#   - if [[ "${TRAVIS_OS_NAME}" == "win"   ]]; then diff tmp/hello.out test/win/fixture.out;  fi
