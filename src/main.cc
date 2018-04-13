@@ -4,10 +4,12 @@
 class http_server : public dlib::server_http
 {
 public:
-	using dlib::server_http;
+	typedef dlib::server_http inherited;
+
+	using inherited::inherited;
 
 private:
-	const string on_request(const dlib::incoming_things&, dlib::outgoing_things&) { return std::string(); }
+	const std::string on_request(const dlib::incoming_things&, dlib::outgoing_things&) { return std::string(); }
 };
 
 int main()
