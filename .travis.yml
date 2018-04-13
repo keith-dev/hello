@@ -3,12 +3,12 @@ matrix:
         - language: cpp
           compiler: gcc
           os: linux
+          dist: trusty
+          sudo: required
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && sudo cmake --build . --target install)
-#             - export CXXFLAGS="${CXXFLAGS} -I../dlib"
-#             - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
           script:
               - make
               - src/hello > tmp/hello.out
@@ -17,12 +17,40 @@ matrix:
         - language: cpp
           compiler: clang
           os: linux
+          dist: trusty
+          sudo: required
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && sudo cmake --build . --target install)
-#             - export CXXFLAGS="${CXXFLAGS} -I../dlib"
-#             - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
+          script:
+              - make
+              - src/hello > tmp/hello.out
+              - diff tmp/hello.out test/unix/fixture.out
+
+        - language: cpp
+          compiler: gcc
+          os: linux
+          dist: precise
+          sudo: required
+          before_script:
+              - mkdir tmp
+              - git clone git://github.com/davisking/dlib.git
+              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && sudo cmake --build . --target install)
+          script:
+              - make
+              - src/hello > tmp/hello.out
+              - diff tmp/hello.out test/unix/fixture.out
+
+        - language: cpp
+          compiler: clang
+          os: linux
+          dist: precise
+          sudo: required
+          before_script:
+              - mkdir tmp
+              - git clone git://github.com/davisking/dlib.git
+              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && sudo cmake --build . --target install)
           script:
               - make
               - src/hello > tmp/hello.out
@@ -39,8 +67,6 @@ matrix:
               - export PATH=`pwd`/bin:${PATH}
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && sudo cmake --build . --target install)
-#             - export CXXFLAGS="${CXXFLAGS} -I../dlib"
-#             - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
           script:
               - make
               - src/hello.full > tmp/hello.out
@@ -57,8 +83,6 @@ matrix:
               - export PATH=`pwd`/bin:${PATH}
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && sudo cmake --build . --target install)
-#             - export CXXFLAGS="${CXXFLAGS} -I../dlib"
-#             - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
           script:
               - make
               - src/hello.full > tmp/hello.out
