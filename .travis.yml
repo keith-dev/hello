@@ -17,6 +17,8 @@ before_script:
 
 script:
     - make
+    - ls -l
+    - ldd ./hello
     - ./hello > tmp/hello.out
     - pwd
     - od -H test/unix/fixture.out
