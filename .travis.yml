@@ -6,7 +6,7 @@ matrix:
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
-              - (mkdir build; cd build; cmake .. ; cmake --build .)
+              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
           script:
               - make
               - src/hello > tmp/hello.out
