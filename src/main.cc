@@ -4,5 +4,5 @@
 int main()
 {
 	std::cout << "hello" << std::endl;
-	server_http();
+	dlib::server_http();
 }
