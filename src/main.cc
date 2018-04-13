@@ -1,4 +1,4 @@
-#include <dlib/server_http>
+#include <dlib/server.h>
 #include <iostream>
 
 int main()
