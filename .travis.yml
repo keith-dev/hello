@@ -8,7 +8,7 @@ matrix:
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
-              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
               - (cd dlib/build && sudo make install)
           script:
               - make
@@ -23,7 +23,7 @@ matrix:
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
-              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
               - (cd dlib/build && sudo make install)
           script:
               - make
@@ -38,7 +38,7 @@ matrix:
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
-              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
               - (cd dlib/build && sudo make install)
           script:
               - make
@@ -53,7 +53,7 @@ matrix:
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
-              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
               - (cd dlib/build && sudo make install)
           script:
               - make
