@@ -6,9 +6,9 @@ matrix:
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
-              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
-              - export CXXFLAGS="${CXXFLAGS} -I../dlib"
-              - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
+              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+#             - export CXXFLAGS="${CXXFLAGS} -I../dlib"
+#             - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
           script:
               - make
               - src/hello > tmp/hello.out
@@ -20,9 +20,9 @@ matrix:
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
-              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
-              - export CXXFLAGS="${CXXFLAGS} -I../dlib"
-              - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
+              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+#             - export CXXFLAGS="${CXXFLAGS} -I../dlib"
+#             - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
           script:
               - make
               - src/hello > tmp/hello.out
@@ -38,9 +38,9 @@ matrix:
               - (cd bin && ln -s `which gobjcopy` objcopy)
               - export PATH=`pwd`/bin:${PATH}
               - git clone git://github.com/davisking/dlib.git
-              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
-              - export CXXFLAGS="${CXXFLAGS} -I../dlib"
-              - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
+              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+#             - export CXXFLAGS="${CXXFLAGS} -I../dlib"
+#             - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
           script:
               - make
               - src/hello.full > tmp/hello.out
@@ -56,9 +56,9 @@ matrix:
               - (cd bin && ln -s `which gobjcopy` objcopy)
               - export PATH=`pwd`/bin:${PATH}
               - git clone git://github.com/davisking/dlib.git
-              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build .)
-              - export CXXFLAGS="${CXXFLAGS} -I../dlib"
-              - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
+              - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+#             - export CXXFLAGS="${CXXFLAGS} -I../dlib"
+#             - export LDFLAGS="${LDFLAGS} -L../dlib/build/dlib -ldlib"
           script:
               - make
               - src/hello.full > tmp/hello.out
