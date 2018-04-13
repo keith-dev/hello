@@ -4,10 +4,12 @@ matrix:
           compiler: gcc
           os: linux
           dist: trusty
+          sudo: required
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+              - (cd dlib/build && sudo make install)
           script:
               - make
               - src/hello > tmp/hello.out
@@ -17,10 +19,12 @@ matrix:
           compiler: clang
           os: linux
           dist: trusty
+          sudo: required
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+              - (cd dlib/build && sudo make install)
           script:
               - make
               - src/hello > tmp/hello.out
@@ -30,10 +34,12 @@ matrix:
           compiler: gcc
           os: linux
           dist: precise
+          sudo: required
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+              - (cd dlib/build && sudo make install)
           script:
               - make
               - src/hello > tmp/hello.out
@@ -43,10 +49,12 @@ matrix:
           compiler: clang
           os: linux
           dist: precise
+          sudo: required
           before_script:
               - mkdir tmp
               - git clone git://github.com/davisking/dlib.git
               - (mkdir dlib/build && cd dlib/build && cmake .. && cmake --build . && cmake --build . --target install)
+              - (cd dlib/build && sudo make install)
           script:
               - make
               - src/hello > tmp/hello.out
