@@ -1,49 +1,49 @@
 matrix:
     include:
         - language: cpp
-        - compiler: gcc
-        - os: linux
-        - before_script:
+          compiler: gcc
+          os: linux
+          before_script:
               - mkdir tmp
-        - script:
+          script:
               - make
               - src/hello > tmp/hello.out
               - diff tmp/hello.out test/unix/fixture.out
 
         - language: cpp
-        - compiler: clang
-        - os: linux
-        - before_script:
+          compiler: clang
+          os: linux
+          before_script:
               - mkdir tmp
-        - script:
+          script:
               - make
               - src/hello > tmp/hello.out
               - diff tmp/hello.out test/unix/fixture.out
 
         - language: cpp
-        - compiler: gcc
-        - os: osx
-        - before_script:
+          compiler: gcc
+          os: osx
+          before_script:
               - mkdir tmp
               - brew install binutils
               - mkdir bin
               - (cd bin && ln -s `which gobjcopy` objcopy)
               - export PATH=`pwd`/bin:${PATH}
-        - script:
+          script:
               - make
               - src/hello > tmp/hello.out
               - diff tmp/hello.out test/unix/fixture.out
 
         - language: cpp
-        - compiler: clang
-        - os: osx
-        - before_script:
+          compiler: clang
+          os: osx
+          before_script:
               - mkdir tmp
               - brew install binutils
               - mkdir bin
               - (cd bin && ln -s `which gobjcopy` objcopy)
               - export PATH=`pwd`/bin:${PATH}
-        - script:
+          script:
               - make
               - src/hello > tmp/hello.out
               - diff tmp/hello.out test/unix/fixture.out
