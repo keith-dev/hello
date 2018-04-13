@@ -1,23 +1,49 @@
-language: cpp
+matrix:
+    include:
+        - language: cpp
+          compiler: gcc
+          os: linux
+          before_script:
+              - mkdir tmp
+          script:
+              - make
+                src/hello > tmp/hello.out
+                diff tmp/hello.out test/unix/fixture.out
 
-compiler:
-    - gcc
-    - clang
+        - language: cpp
+          compiler: clang
+          os: linux
+          before_script:
+              - mkdir tmp
+          script:
+              - make
+                src/hello > tmp/hello.out
+                diff tmp/hello.out test/unix/fixture.out
 
-os:
-    - linux
-    - osx
+        - language: cpp
+          compiler: gcc
+          os: osx
+          before_script:
+              - mkdir tmp
+                brew install binutils
+                mkdir bin
+                (cd bin && ln -s `which gobjcopy` objcopy)
+                export PATH=`pwd`/bin:${PATH}
+          script:
+              - make
+                src/hello > tmp/hello.out
+                diff tmp/hello.out test/unix/fixture.out
 
-before_script:
-    - mkdir tmp
-    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then brew install binutils; fi
-    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then mkdir bin; fi
-    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then (cd bin && ln -s `which gobjcopy` objcopy); fi
-    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then export PATH=`pwd`/bin:${PATH}; fi
-
-script:
-    - make
-    - src/hello.full > tmp/hello.out
-    - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then diff tmp/hello.out test/unix/fixture.out; fi
-    - if [[ "${TRAVIS_OS_NAME}" == "osx"   ]]; then diff tmp/hello.out test/unix/fixture.out; fi
-    - if [[ "${TRAVIS_OS_NAME}" == "win"   ]]; then diff tmp/hello.out test/win/fixture.out;  fi
+        - language: cpp
+          compiler: clang
+          os: osx
+          before_script:
+              - mkdir tmp
+                brew install binutils
+                mkdir bin
+                (cd bin && ln -s `which gobjcopy` objcopy)
+                export PATH=`pwd`/bin:${PATH}
+          script:
+              - make
+                src/hello > tmp/hello.out
+                diff tmp/hello.out test/unix/fixture.out
