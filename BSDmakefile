@@ -1,5 +1,3 @@
-PROG_CXX = hello
-SRCS     = main.cc
-MK_MAN   = no
+SUBDIR = src
 
-.include <bsd.prog.mk>
+.include <bsd.subdir.mk>
