@@ -2,6 +2,7 @@
 #include <iostream>
 
 int main()
+try
 {
 	http_server server;
 
@@ -10,4 +11,8 @@ int main()
 
 	std::cout << "press any key to stop" << std::endl;
 	std::cin.get();
+}
+catch (const std::exception& e)
+{
+	std::cerr << "fatal: " << e.what() << std::endl;
 }

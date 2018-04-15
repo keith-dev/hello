@@ -5,7 +5,7 @@ INCS     = server.hpp
 CXXFLAGS += -I../dlib
 CXXFLAGS += -O2 -pipe -g -std=c++11 -pthread
 
-LDFLAGS  += -L../dlib/build/dlib -ldlib
+LDADD    += -L../dlib/build/dlib -ldlib
 
 DEPENDS  = $(PROG_CXX).depends
 
@@ -22,7 +22,7 @@ install:
 	install -o root -m 444 $(PROG_CXX).debug /.debug/$(PROG_CXX).debug
 
 $(PROG_CXX): $(SRCS:.cc=.o)
-	$(LINK.cc) -o $@ $^ $(LDFLAGS)
+	$(LINK.cc) -o $@ $^ $(LDADD) $(LDFLAGS)
 	mv $@ $@.full
 	objcopy --only-keep-debug $@.full $@.debug
 	objcopy --strip-debug --add-gnu-debuglink=$@.debug $@.full $@

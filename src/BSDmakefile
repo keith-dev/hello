@@ -6,6 +6,6 @@ MK_MAN   = no
 CXXFLAGS += -I../dlib
 CXXFLAGS += -std=c++11 -pthread
 
-LDFLAGS  += -L../dlib/build/dlib -ldlib
+LDADD    += -L../dlib/build/dlib -ldlib
 
 .include <bsd.prog.mk>
