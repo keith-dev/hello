@@ -1,5 +1,6 @@
 PROG_CXX = hello
-SRCS     = main.cc
+SRCS     = main.cc server.cc
+INCS     = server.hpp
 MK_MAN   = no
 
 CXXFLAGS += -I../dlib

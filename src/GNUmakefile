@@ -1,5 +1,6 @@
 PROG_CXX = hello
-SRCS     = main.cc
+SRCS     = main.cc server.cc
+INCS     = server.hpp
 
 CXXFLAGS += -I../dlib
 CXXFLAGS += -O2 -pipe -g -std=c++11 -pthread
