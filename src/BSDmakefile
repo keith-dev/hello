@@ -1,5 +1,5 @@
 PROG_CXX = hello
-SRCS     = main.cc opt.cc server.cc
+SRCS     = main.cc opt.cc server.cc ../dlib/dlib/http_client/http_client.cpp
 INCS     = opt.hpp server.hpp
 MK_MAN   = no
 

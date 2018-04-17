@@ -10,11 +10,12 @@ template <typename T> struct opt {
 };
 
 struct opts_t {
-	opts_t(int port) : port(port) {}
-	opts_t(int port, std::string ip) : port(port), ip(ip) {}
+	opts_t(int port) : port(port), server_sleep(10) {}
+	opts_t(int port, std::string ip) : port(port), ip(ip), server_sleep(10) {}
 
 	opt<int> port;
 	opt<std::string> ip;
+	opt<int> server_sleep;
 };
 
 opts_t getopt(int argc, char* argv[]);
