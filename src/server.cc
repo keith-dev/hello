@@ -1,9 +1,39 @@
 #include "server.hpp"
 #include <sstream>
+#include <string.h>
+
+namespace
+{
+	enum verb_t { UNKNOWN, HEAD, GET, POST };
+
+	verb_t verb(const std::string& str)
+	{
+		if (!strcmp(str.c_str(), "HEAD")) return HEAD;
+		if (!strcmp(str.c_str(), "GET"))  return GET;
+		if (!strcmp(str.c_str(), "POST")) return POST;
+
+		return UNKNOWN;
+	}
+}
 
 const std::string http_server::on_request(const dlib::incoming_things& incoming, dlib::outgoing_things& outgoing)
 {
 	std::ostringstream sout;
+/*
+	sout << " <html> <body> ";
+
+	switch (verb(incoming.request_type)) {
+	case GET:
+	case HEAD:
+	case POST:
+	default:
+		sout << "<br>  request_type = " << incoming.request_type << std::endl;
+		;
+	}
+
+	sout << "</body> </html>";
+	return sout.str();
+ */
 	// We are going to send back a page that contains an HTML form with two text input fields.
 	// One field called name.  The HTML form uses the post method but could also use the get
 	// method (just change method='post' to method='get').
