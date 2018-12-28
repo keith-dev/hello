@@ -1,18 +1,18 @@
 PROG_CXX = hello
-SRCS     = main.cc opt.cc server.cc ../dlib/dlib/http_client/http_client.cpp
+SRCS     = main.cpp opt.cpp server.cpp ../dlib/http_client/http_client.cpp
 INCS     = opt.hpp server.hpp
 
-CXXFLAGS += -I../dlib
+CXXFLAGS += -I..
 CXXFLAGS += -O2 -pipe -g -std=c++11 -pthread
 
-LDADD    += -L../dlib/build/dlib -ldlib
+#LDADD    += -L../dlib/build/dlib -ldlib
 
 DEPENDS  = $(PROG_CXX).depends
 
 all: $(PROG_CXX)
 
 clean:
-	- rm $(PROG_CXX) $(DEPENDS) $(SRCS:.cc=.o) $(SRCS:.cc=.depend)
+	- rm $(PROG_CXX) $(DEPENDS) $(SRCS:.cpp=.o) $(SRCS:.cpp=.depend)
 
 install:
 #	install -s -o root -g wheel -m 555 $(PROG_CXX) /$(PROG_CXX)
@@ -21,16 +21,16 @@ install:
 #	install -o root -g wheel -m 444 $(PROG_CXX).debug /.debug/$(PROG_CXX).debug
 	install -o root -m 444 $(PROG_CXX).debug /.debug/$(PROG_CXX).debug
 
-$(PROG_CXX): $(SRCS:.cc=.o)
-	$(LINK.cc) -o $@ $^ $(LDADD) $(LDFLAGS)
+$(PROG_CXX): $(SRCS:.cpp=.o)
+	$(LINK.cpp) -o $@ $^ $(LDADD) $(LDFLAGS)
 	mv $@ $@.full
 	objcopy --only-keep-debug $@.full $@.debug
 	objcopy --strip-debug --add-gnu-debuglink=$@.debug $@.full $@
 
-$(DEPENDS): $(SRCS:.cc=.depend)
-	cat $(SRCS:.cc=.depend) > $(DEPENDS)
+$(DEPENDS): $(SRCS:.cpp=.depend)
+	cat $(SRCS:.cpp=.depend) > $(DEPENDS)
 
-%.depend: %.cc
-	$(COMPILE.cc) -MM $< > $@
+%.depend: %.cpp
+	$(COMPILE.cpp) -MM $< > $@
 
 -include $(DEPENDS)

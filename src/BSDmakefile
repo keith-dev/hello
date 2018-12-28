@@ -1,9 +1,9 @@
 PROG_CXX = hello
-SRCS     = main.cc opt.cc server.cc ../dlib/dlib/http_client/http_client.cpp
+SRCS     = main.cpp opt.cpp server.cpp ../dlib/http_client/http_client.cpp
 INCS     = opt.hpp server.hpp
 MK_MAN   = no
 
-CXXFLAGS += -I../dlib
+CXXFLAGS += -I..
 CXXFLAGS += -std=c++11 -pthread
 
 LDADD    += -L../dlib/build/dlib -ldlib
